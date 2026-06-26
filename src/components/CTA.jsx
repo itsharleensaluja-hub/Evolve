@@ -5,19 +5,22 @@ import { useInView } from '../hooks/useInView'
 
 function useAnimatedCounter(target, inView, delay = 0, decimals = 0) {
   const [display, setDisplay] = useState(0)
+  const fromRef = useRef(0)
   const animRef = useRef(null)
 
   useEffect(() => {
     if (!inView) return
     const start = performance.now() + delay
-    const from = 0
+    const from = fromRef.current
 
     animRef.current = requestAnimationFrame(function tick(now) {
       const t = Math.max(0, now - start)
       const progress = Math.min(t / 1200, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
       const next = from + (target - from) * eased
-      setDisplay(decimals > 0 ? parseFloat(next.toFixed(decimals)) : Math.round(next))
+      const displayVal = decimals > 0 ? parseFloat(next.toFixed(decimals)) : Math.round(next)
+      setDisplay(displayVal)
+      fromRef.current = displayVal
       if (progress < 1) {
         animRef.current = requestAnimationFrame(tick)
       }

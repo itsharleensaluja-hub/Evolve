@@ -55,7 +55,7 @@ export const features = [
     variant: 'bordered',
   },
   {
-    id: 4,
+    id: 9,
     title: 'Risk Detection',
     description: 'Catches churn signals, declining sales, and inventory issues weeks before they hit. Real-time alerts so you act early.',
     icon: 'cog',

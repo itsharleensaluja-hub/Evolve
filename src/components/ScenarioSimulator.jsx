@@ -24,8 +24,8 @@ function useAnimatedValue(target, inView, delay = 0) {
       const progress = Math.min(t / 600, 1)
       const eased = 1 - Math.pow(1 - progress, 3)
       const next = Math.round(from + (target - from) * eased)
-      fromRef.current = next
       setDisplay(next)
+      fromRef.current = next
       if (progress < 1) {
         animRef.current = requestAnimationFrame(tick)
       }
@@ -68,13 +68,13 @@ function ScenarioBar({ label, baselineVal, projectedVal, color }) {
   )
 }
 
-function ResultCard({ label, baselineVal, projectedVal, inView, delay }) {
+function ResultCard({ label, baselineVal, projectedVal, inView, delay, color }) {
   const display = useAnimatedValue(projectedVal, inView, delay)
   const diff = projectedVal - baselineVal
   const isPositive = diff >= 0
 
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm">
+    <div className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm" style={{ borderLeftColor: color, borderLeftWidth: color ? 3 : 0 }}>
       <span className="text-[10px] font-heading font-semibold tracking-wider text-mint/50 uppercase">{label}</span>
       <div className="mt-2">
         <div className="flex items-baseline gap-2">

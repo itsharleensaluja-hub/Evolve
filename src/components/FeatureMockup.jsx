@@ -43,7 +43,6 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <rect x="12" y="90" width="176" height="22" rx="6" fill="white" stroke="#D9E8E2" strokeWidth="1" />
         <circle cx="24" cy="101" r="5" fill="#FF9932" />
         <text x="36" y="101" fill="#172B36" fontSize="9" fontWeight="600" fontFamily="Inter">Churn risk rising — support response +40%</text>
-        <rect x="12" y="90" width="176" height="22" rx="6" fill="white" stroke="#D9E8E2" strokeWidth="1" />
       </svg>
     ),
     'arrow-trending-up': (

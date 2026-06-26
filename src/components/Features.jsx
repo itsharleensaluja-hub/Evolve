@@ -140,7 +140,7 @@ function BentoGrid({ features, activeIndex, hoveredIndex, onActivate, onHover, o
 
         return (
           <button
-            key={`${feature.id}-${isHovered ? 'h' : 's'}`}
+            key={`${feature.id}-${feature.variant || 'default'}`}
             onClick={() => onActivate(globalIdx)}
             onMouseEnter={() => onHover(globalIdx)}
             onMouseLeave={onHoverEnd}

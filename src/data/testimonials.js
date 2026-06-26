@@ -6,7 +6,7 @@ export const testimonials = [
     initials: 'SC',
     content: 'Evolve\'s health score caught a $240k cash flow gap three weeks before our statements showed it. By the time we would have noticed, we\'d already fixed it. That single alert paid for the entire year.',
     rating: 5,
-    company: 'Lumos Health',
+    company: 'Lumos Technologies',
     industry: 'Health Tech',
     metric: '$240k cash flow saved',
   },
