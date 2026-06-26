@@ -72,7 +72,7 @@ export default function HealthScoreGauge() {
   })
 
   return (
-    <section id="health-score" className="py-20 md:py-28 bg-powder relative overflow-hidden" ref={ref}>
+    <section id="health-score" className="py-20 md:py-28 bg-mint relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 pointer-events-none bg-noise" />
       <div className="absolute top-0 right-0 w-96 h-96 rounded-full opacity-5" style={{ background: 'radial-gradient(circle, #114C5A, transparent 70%)' }} />
 
@@ -83,10 +83,10 @@ export default function HealthScoreGauge() {
               Health Score
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] text-noir mb-5">
-              Your business health at a glance
+              One score that captures the pulse of your business
             </h2>
-            <p className="text-base md:text-lg leading-relaxed text-noir/60 mb-8 max-w-md">
-              One number that captures every dimension of your business. Updated every 15 minutes. Drops below 70? You will know before your team does.
+            <p className="text-base md:text-lg leading-relaxed text-noir/75 mb-8 max-w-md">
+              Updated every 15 minutes. Drops below 70? You'll hear about it before your team does.
             </p>
 
             <div className="flex flex-col gap-3">
@@ -179,7 +179,7 @@ function DriverRow({ driver, index, inView, reduced }) {
         <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: driver.color }} />
         <div>
           <span className="text-sm font-medium text-noir">{driver.label}</span>
-          <span className="text-xs text-noir/40 block">{driver.detail}</span>
+          <span className="text-xs text-noir/60 block">{driver.detail}</span>
         </div>
       </div>
       <span className="font-heading text-lg font-bold text-noir">{driver.value}</span>

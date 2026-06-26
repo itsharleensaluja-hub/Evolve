@@ -39,7 +39,7 @@ function FAQItem({ faq, isOpen, onClick }) {
         }}
       >
         <div ref={contentRef} className="pb-5 md:pb-6">
-          <p className="text-sm text-noir/60 leading-relaxed">
+          <p className="text-sm text-noir/75 leading-relaxed">
             {faq.answer}
           </p>
         </div>
@@ -53,12 +53,12 @@ export default function FAQ() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-powder" ref={ref} style={{ contentVisibility: 'auto' }}>
+    <section id="faq" className="py-20 md:py-28 bg-mint" ref={ref} style={{ contentVisibility: 'auto' }}>
       <Container>
         <SectionHeading
           label="FAQ"
-          title="Frequently asked questions"
-          description="Everything you need to know about Evolve and how it can help your business."
+          title="Questions we hear most"
+          description="Concise answers to the questions we hear most."
         />
 
         <div className={`max-w-3xl mx-auto transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

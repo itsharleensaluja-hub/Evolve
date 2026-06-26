@@ -9,6 +9,7 @@ export const features = [
     badge: 'Health Score 87',
     size: 'lg',
     layout: 'chart-first',
+    variant: 'dark',
     kpis: [
       { label: 'Revenue', value: '$128.4k', trend: '+12.5%' },
       { label: 'Health', value: '87/100', trend: '+4 pts' },
@@ -24,6 +25,7 @@ export const features = [
     badge: '12 new today',
     size: 'md',
     layout: 'split',
+    variant: 'gradient',
     kpis: [
       { label: 'Insights', value: '284', trend: '+12 today' },
     ],
@@ -38,6 +40,7 @@ export const features = [
     badge: '94% accuracy',
     size: 'sm',
     layout: 'default',
+    variant: 'default',
   },
   {
     id: 4,
@@ -49,6 +52,19 @@ export const features = [
     badge: '3 active',
     size: 'sm',
     layout: 'chart-first',
+    variant: 'bordered',
+  },
+  {
+    id: 4,
+    title: 'Risk Detection',
+    description: 'Catches churn signals, declining sales, and inventory issues weeks before they hit. Real-time alerts so you act early.',
+    icon: 'cog',
+    status: 'Alert',
+    statusColor: '#EF4444',
+    badge: '3 active',
+    size: 'sm',
+    layout: 'chart-first',
+    variant: 'default',
   },
   {
     id: 5,
@@ -74,6 +90,7 @@ export const features = [
     badge: 'Always on',
     size: 'sm',
     layout: 'split',
+    variant: 'gradient',
   },
   {
     id: 7,
@@ -85,6 +102,7 @@ export const features = [
     badge: '8 recommendations',
     size: 'md',
     layout: 'split',
+    variant: 'dark',
   },
   {
     id: 8,
@@ -96,6 +114,7 @@ export const features = [
     badge: 'Q4 progress',
     size: 'sm',
     layout: 'kpi-hero',
+    variant: 'bordered',
     kpis: [
       { label: 'Goals on track', value: '6/8', trend: '' },
     ],

@@ -50,7 +50,7 @@ export default function Testimonials() {
   }, [paused])
 
   return (
-    <section id="testimonials" className="py-20 md:py-28 bg-powder" ref={ref} style={{ contentVisibility: 'auto' }}>
+    <section id="testimonials" className="py-20 md:py-28 bg-white" ref={ref} style={{ contentVisibility: 'auto' }}>
       <Container>
         <SectionHeading
           label="Testimonials"
@@ -73,7 +73,7 @@ export default function Testimonials() {
                 {[...Array(t.rating)].map((_, i) => (
                   <Star key={i} color="#FFC801" />
                 ))}
-                <span className="text-sm font-semibold text-noir/50 ml-2 font-heading">{t.rating}.0</span>
+                <span className="text-sm font-semibold text-noir/70 ml-2 font-heading">{t.rating}.0</span>
               </div>
               <span className="text-[10px] font-medium text-teal bg-mint/40 px-3 py-1 rounded-full font-heading tracking-wider">
                 {t.industry}
@@ -94,7 +94,7 @@ export default function Testimonials() {
                 </div>
                 <div>
                   <p className="text-sm font-bold text-noir">{t.name}</p>
-                  <p className="text-xs text-noir/50">{t.role}, {t.company}</p>
+                  <p className="text-xs text-noir/70">{t.role}, {t.company}</p>
                 </div>
               </div>
               <div className="hidden sm:flex items-center gap-1.5 bg-mint/30 rounded-xl px-3 py-1.5">

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 const variants = {
   primary:
@@ -28,9 +28,37 @@ export default function Button({
   className = '',
   href,
   onClick,
+  magnetic,
   ...rest
 }) {
   const btnRef = useRef(null)
+  const magnetRef = useRef(null)
+
+  useEffect(() => {
+    if (!magnetic) return
+    const el = magnetRef.current
+    if (!el) return
+
+    const onMove = (e) => {
+      const rect = el.getBoundingClientRect()
+      const x = e.clientX - rect.left - rect.width / 2
+      const y = e.clientY - rect.top - rect.height / 2
+      const dist = Math.sqrt(x * x + y * y)
+      if (dist < 120) {
+        const s = 1 - dist / 120
+        el.style.transform = `translate(${x * 0.25 * s}px, ${y * 0.25 * s}px)`
+      } else {
+        el.style.transform = ''
+      }
+    }
+    const onLeave = () => { el.style.transform = '' }
+    el.addEventListener('mousemove', onMove)
+    el.addEventListener('mouseleave', onLeave)
+    return () => {
+      el.removeEventListener('mousemove', onMove)
+      el.removeEventListener('mouseleave', onLeave)
+    }
+  }, [magnetic])
 
   const handleClick = (e) => {
     const btn = btnRef.current
@@ -57,7 +85,9 @@ export default function Button({
       onClick={handleClick}
       {...rest}
     >
-      {children}
+      <span ref={magnetRef} style={{ display: 'inline-flex', alignItems: 'center', gap: 'inherit', transition: 'transform 0.1s ease-out' }}>
+        {children}
+      </span>
     </Tag>
   )
 }

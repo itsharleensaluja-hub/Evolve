@@ -11,6 +11,7 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <path d="M60 27 A28 28 0 1 1 36 68 L60 55 Z" fill="#FFC801" opacity="0.7" />
         <path d="M60 55 L36 68 A28 28 0 0 1 80 38 Z" fill="#114C5A" opacity="0.4" />
         <path d="M60 55 L80 38 A28 28 0 0 1 88 55 Z" fill="#FF9932" opacity="0.5" />
+        <circle cx="60" cy="55" r="28" fill="none" stroke="#FFC801" strokeWidth="2" strokeDasharray="176" strokeDashoffset="44" className="animated-bar" style={{ transformOrigin: 'center', animationDelay: '0.2s' }} />
         <text x="60" y="52" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono" textAnchor="middle">87</text>
         <text x="60" y="63" fill="#114C5A" fontSize="7" fontFamily="Inter" textAnchor="middle">/100</text>
         <rect x="108" y="48" width="80" height="20" rx="4" fill="#FFC801" opacity="0.08" />
@@ -31,6 +32,7 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <text x="152" y="17" fill="#FFC801" fontSize="8" fontWeight="700" fontFamily="JetBrains Mono">AI</text>
         <rect x="12" y="34" width="176" height="24" rx="6" fill="white" stroke="#D9E8E2" strokeWidth="1" />
         <text x="22" y="50" fill="#114C5A" fontSize="9" fontFamily="Inter">What happened this week?</text>
+        <rect x="122" y="42" width="2" height="10" rx="1" fill="#FFC801" className="pulse-dot" style={{ animationDuration: '1s' }} />
         <svg x="176" y="38" width="8" height="16" viewBox="0 0 24 24" fill="none" stroke="#114C5A" strokeWidth="2" strokeLinecap="round">
           <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
@@ -73,6 +75,7 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <text x="158" y="100" fill="#114C5A" fontSize="6" fontFamily="Inter">Dec</text>
         <rect x="22" y="104" width="70" height="10" rx="4" fill="#FFC801" opacity="0.12" />
         <text x="26" y="112" fill="#FF9932" fontSize="7" fontWeight="700" fontFamily="Inter">94% forecast accuracy</text>
+        <polyline points="22,96 34,90 46,92 58,86 70,80" fill="none" stroke="#FFC801" strokeWidth="1.5" strokeLinecap="round" className="chart-draw" style={{ strokeDasharray: '80', strokeDashoffset: '80', animationDuration: '1s' }} />
       </svg>
     ),
     cog: (
@@ -97,6 +100,10 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         })}
         <rect x="12" y="100" width="176" height="14" rx="6" fill="#FF9932" opacity="0.1" />
         <text x="100" y="110" fill="#FF9932" fontSize="7" fontWeight="700" fontFamily="Inter" textAnchor="middle">3 unresolved alerts — View all →</text>
+        <g style={{ animation: 'slide-in-right 0.3s ease-out 0.6s forwards', opacity: 0 }}>
+          <rect x="140" y="6" width="28" height="14" rx="7" fill="#EF4444" />
+          <text x="154" y="16" fill="white" fontSize="7" fontWeight="700" fontFamily="Inter" textAnchor="middle">3</text>
+        </g>
       </svg>
     ),
     'arrow-path': (
@@ -109,11 +116,13 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <text x="18" y="58" fill="#114C5A" fontSize="6" fontFamily="Inter">Generated</text>
         <line x1="66" y1="50" x2="74" y2="50" stroke="#D9E8E2" strokeWidth="1.5" />
         <polygon points="74,47 78,50 74,53" fill="#D9E8E2" />
+        <circle cx="72" cy="50" r="8" fill="none" stroke="#FFC801" strokeWidth="0.5" className="pulse-dot" style={{ animationDuration: '1.5s' }} />
         <rect x="80" y="36" width="54" height="28" rx="6" fill="#FFC801" opacity="0.25" stroke="#FFC801" strokeWidth="1" />
         <text x="86" y="49" fill="#172B36" fontSize="8" fontWeight="600" fontFamily="Inter">Slack</text>
         <text x="86" y="58" fill="#114C5A" fontSize="6" fontFamily="Inter">Notified</text>
         <line x1="134" y1="50" x2="142" y2="50" stroke="#D9E8E2" strokeWidth="1.5" />
         <polygon points="142,47 146,50 142,53" fill="#D9E8E2" />
+        <circle cx="140" cy="50" r="8" fill="none" stroke="#FFC801" strokeWidth="0.5" className="pulse-dot" style={{ animationDuration: '1.5s', animationDelay: '0.3s' }} />
         <rect x="148" y="36" width="40" height="28" rx="6" fill="#FFC801" />
         <text x="152" y="50" fill="white" fontSize="8" fontWeight="700" fontFamily="Inter">Done</text>
         <text x="152" y="58" fill="#FFC801" fontSize="6" fontFamily="Inter" opacity="0.8">✓</text>
@@ -140,11 +149,9 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
         <rect x="74" y="98" width="114" height="22" rx="8" fill="#114C5A" />
         <text x="82" y="112" fill="white" fontSize="8" fontWeight="500" fontFamily="Inter">What about churn?</text>
 
-        <g className="typing-indicator">
-          <rect x="12" y="126" width="60" height="22" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
-          <circle cx="20" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0s' }} />
-          <circle cx="30" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0.15s' }} />
-          <circle cx="40" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0.3s' }} />
+        <g className="typing-indicator" style={{ animation: 'fade-in 0.3s ease-out 0.3s forwards' }}>
+          <rect x="12" y="126" width="80" height="22" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
+          <text x="20" y="140" fill="#172B36" fontSize="7" fontWeight="500" fontFamily="Inter">Churn risk at 12%</text>
         </g>
       </svg>
     ),
@@ -166,6 +173,7 @@ export default function FeatureMockup({ type, className = '', size = 'sm' }) {
               <text x="26" y={y + 9} fill="#172B36" fontSize="9" fontWeight="600" fontFamily="Inter">{item.title}</text>
               <text x="26" y={y + 19} fill="#114C5A" fontSize="7" fontFamily="Inter">{item.desc}</text>
               <circle cx="175" cy={y + 11} r="4" fill="#FFC801" opacity={i === 0 ? 1 : 0.3} />
+              {i === 0 && <polyline points="172,11 175,14 179,9" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="chart-draw" style={{ strokeDasharray: '10', strokeDashoffset: '10', animationDuration: '0.3s' }} />}
             </g>
           )
         })}

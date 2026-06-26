@@ -11,6 +11,7 @@ import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
+import { useInView } from './hooks/useInView'
 
 function ScrollProgress() {
   const [width, setWidth] = useState(0)
@@ -50,6 +51,19 @@ function Loader({ onDone }) {
   )
 }
 
+function StepConnector({ label }) {
+  const [ref, inView] = useInView()
+  return (
+    <div ref={ref} className="flex flex-col items-center py-8 md:py-12 transition-all duration-700"
+      style={{ opacity: inView ? 1 : 0, transform: inView ? 'translateY(0)' : 'translateY(12px)' }}>
+      <div className="w-px h-12 bg-gradient-to-b from-yellow to-transparent" />
+      <span className="text-[10px] font-heading font-semibold tracking-[0.25em] uppercase text-yellow mt-4">
+        {label}
+      </span>
+    </div>
+  )
+}
+
 export default function App() {
   const [loading, setLoading] = useState(true)
 
@@ -66,10 +80,15 @@ export default function App() {
 
       <main id="main">
         <Hero />
+        <StepConnector label="Connect" />
         <Features />
+        <StepConnector label="Understand" />
         <Timeline />
+        <StepConnector label="Predict" />
         <HealthScoreGauge />
+        <StepConnector label="Act" />
         <DashboardPreview />
+        <StepConnector label="Evolve" />
         <ScenarioSimulator />
         <Pricing />
         <Testimonials />

@@ -130,10 +130,10 @@ export default function ScenarioSimulator() {
               Scenario Simulator
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] text-powder mb-5">
-              What if&hellip;
+              Move a slider. See what changes.
             </h2>
             <p className="text-base md:text-lg leading-relaxed text-mint/60 max-w-lg mx-auto">
-              Adjust levers, see the impact in real time. No spreadsheets, no guessing.
+              No spreadsheets. No formulas. Just drag and discover.
             </p>
           </div>
 

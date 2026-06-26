@@ -21,10 +21,10 @@ const PriceDisplay = memo(function PriceDisplay({ amount, currency, annual, peri
         <span key={`${annual}-${currency.code}`} className="font-heading text-4xl md:text-5xl font-extrabold text-noir animate-price-enter">
           {formatted}
         </span>
-        <span className="text-sm text-noir/50">{period}</span>
+        <span className="text-sm text-noir/70">{period}</span>
       </div>
       {annual && (
-        <p className="text-xs text-noir/40 mt-1">
+        <p className="text-xs text-noir/60 mt-1">
           {(amount / 12).toLocaleString(currency.locale, {
             style: 'currency',
             currency: currency.code,
@@ -56,7 +56,7 @@ const PricingCard = memo(function PricingCard({ plan, price, currency, annual, p
 
       <div className="mb-6">
         <h3 className="font-heading text-lg font-bold text-noir mb-1">{plan.name}</h3>
-        <p className="text-sm text-noir/50 leading-relaxed">{plan.description}</p>
+        <p className="text-sm text-noir/70 leading-relaxed">{plan.description}</p>
       </div>
 
       <PriceDisplay amount={price} currency={currency} annual={annual} period={period} />
@@ -67,7 +67,7 @@ const PricingCard = memo(function PricingCard({ plan, price, currency, annual, p
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFC801" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="mt-0.5 shrink-0">
               <polyline points="20 6 9 17 4 12" />
             </svg>
-            <span className="text-noir/60">{feat}</span>
+            <span className="text-noir/75">{feat}</span>
           </li>
         ))}
       </ul>
@@ -91,7 +91,7 @@ function CurrencyToggle({ currencyCode, onChange }) {
           className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer ${
             currencyCode === c.code
               ? 'bg-yellow text-noir shadow-sm'
-              : 'text-noir/50 hover:text-noir hover:bg-mint/30'
+              : 'text-noir/70 hover:text-noir hover:bg-mint/30'
           }`}
           aria-label={`Switch to ${c.label}`}
           aria-selected={currencyCode === c.code}
@@ -107,7 +107,7 @@ function CurrencyToggle({ currencyCode, onChange }) {
 function BillingToggle({ annual, onChange }) {
   return (
     <div className="flex items-center gap-4">
-      <span className={`text-sm font-medium transition-colors ${!annual ? 'text-noir' : 'text-noir/50'}`}>
+      <span className={`text-sm font-medium transition-colors ${!annual ? 'text-noir' : 'text-noir/70'}`}>
         Monthly
       </span>
       <button
@@ -125,7 +125,7 @@ function BillingToggle({ annual, onChange }) {
           }`}
         />
       </button>
-      <span className={`text-sm font-medium transition-colors ${annual ? 'text-noir' : 'text-noir/50'}`}>
+      <span className={`text-sm font-medium transition-colors ${annual ? 'text-noir' : 'text-noir/70'}`}>
         Annual
       </span>
       <span className="text-[11px] font-heading font-semibold text-yellow bg-yellow/10 px-2.5 py-1 rounded-full">
@@ -161,8 +161,8 @@ export default function Pricing() {
       <Container>
         <SectionHeading
           label="Pricing"
-          title="Simple, transparent plans"
-          description="Every plan includes AI health scores, revenue forecasting, and real-time monitoring. Start free, upgrade when you grow."
+          title="Plans that grow with you. Not the other way around."
+          description="Start with what you need. Add as you grow. No hidden fees."
         />
 
         <div className={`flex flex-col items-center gap-6 mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

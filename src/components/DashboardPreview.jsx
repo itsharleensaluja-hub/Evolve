@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Container from './ui/Container'
 import SectionHeading from './ui/SectionHeading'
 import { useInView } from '../hooks/useInView'
@@ -7,6 +8,20 @@ import { useReducedMotion } from '../hooks/useReducedMotion'
 export default function DashboardPreview() {
   const [ref, inView] = useInView({ threshold: 0.05 })
   const reduced = useReducedMotion()
+  const [phase, setPhase] = useState(0)
+
+  useEffect(() => {
+    if (!inView) { setPhase(0); return }
+    if (reduced) { setPhase(4); return }
+    const timers = [
+      setTimeout(() => setPhase(1), 200),
+      setTimeout(() => setPhase(2), 800),
+      setTimeout(() => setPhase(3), 1400),
+      setTimeout(() => setPhase(4), 2200),
+    ]
+    return () => timers.forEach(clearTimeout)
+  }, [inView, reduced])
+
   const containerRef = useWaapiAnimation(
     [{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'translateY(0)' }],
     { duration: 700, delay: reduced ? 0 : 100, fill: 'forwards' },
@@ -18,8 +33,8 @@ export default function DashboardPreview() {
       <Container>
         <SectionHeading
           label="Dashboard"
-          title="Your entire business at a glance"
-          description="Real-time analytics, AI-powered insights, and everything you need to make smarter decisions — all in one place."
+          title="What's working, what's not, and what's next."
+          description="Every metric that matters. Updated in real time."
         />
       </Container>
 
@@ -32,7 +47,7 @@ export default function DashboardPreview() {
               <span className="w-3 h-3 rounded-full bg-emerald-400/60" />
               <span className="text-xs font-medium ml-2 text-teal font-heading">app.evolve.ai/dashboard</span>
             </div>
-            <FullDashboardSvg />
+            <FullDashboardSvg phase={phase} reduced={reduced} />
           </div>
           <div className="absolute -bottom-4 -right-4 -z-10 w-full h-full rounded-2xl border border-mint/40" />
         </div>
@@ -41,7 +56,7 @@ export default function DashboardPreview() {
   )
 }
 
-function FullDashboardSvg() {
+function FullDashboardSvg({ phase, reduced }) {
   return (
     <svg viewBox="0 0 900 500" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto" preserveAspectRatio="xMidYMid meet">
       <rect width="900" height="500" fill="white" />
@@ -68,28 +83,30 @@ function FullDashboardSvg() {
       <text x="224" y="40" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">Dashboard</text>
       <text x="224" y="58" fill="#114C5A" fontSize="11" fontFamily="Inter">Your business at a glance</text>
 
-      <g className="kpi-group">
-        <rect x="224" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
-        <text x="240" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">TOTAL REVENUE</text>
-        <text x="240" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">$384.2k</text>
-        <text x="240" y="136" fill="#FF9932" fontSize="10" fontWeight="600" fontFamily="Inter">↑ 12.5% this month</text>
+      {(phase >= 1 || reduced) && (
+        <g style={phase >= 1 || reduced ? {} : { opacity: 0 }}>
+          <rect x="224" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
+          <text x="240" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">TOTAL REVENUE</text>
+          <text x="240" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">$384.2k</text>
+          <text x="240" y="136" fill="#FF9932" fontSize="10" fontWeight="600" fontFamily="Inter">↑ 12.5% this month</text>
 
-        <rect x="390" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
-        <text x="406" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">HEALTH SCORE</text>
-        <text x="406" y="120" fill="#FFC801" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">87</text>
-        <text x="440" y="120" fill="#172B36" fontSize="12" fontFamily="Inter">/100</text>
-        <text x="406" y="136" fill="#172B36" fontSize="10" fontFamily="Inter">↑ 4 pts this quarter</text>
+          <rect x="390" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
+          <text x="406" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">HEALTH SCORE</text>
+          <text x="406" y="120" fill="#FFC801" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">87</text>
+          <text x="440" y="120" fill="#172B36" fontSize="12" fontFamily="Inter">/100</text>
+          <text x="406" y="136" fill="#172B36" fontSize="10" fontFamily="Inter">↑ 4 pts this quarter</text>
 
-        <rect x="556" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
-        <text x="572" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">ACTIVE USERS</text>
-        <text x="572" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">2,847</text>
-        <text x="572" y="136" fill="#FF9932" fontSize="10" fontWeight="600" fontFamily="Inter">↑ 8.3% this week</text>
+          <rect x="556" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
+          <text x="572" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">ACTIVE USERS</text>
+          <text x="572" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">2,847</text>
+          <text x="572" y="136" fill="#FF9932" fontSize="10" fontWeight="600" fontFamily="Inter">↑ 8.3% this week</text>
 
-        <rect x="722" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
-        <text x="738" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">CASH FLOW</text>
-        <text x="738" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">+$34.2k</text>
-        <text x="738" y="136" fill="#114C5A" fontSize="10" fontFamily="Inter">Positive this month</text>
-      </g>
+          <rect x="722" y="76" width="155" height="80" rx="10" fill="#F1F6F4" />
+          <text x="738" y="98" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" letterSpacing="0.5">CASH FLOW</text>
+          <text x="738" y="120" fill="#172B36" fontSize="18" fontWeight="800" fontFamily="JetBrains Mono">+$34.2k</text>
+          <text x="738" y="136" fill="#114C5A" fontSize="10" fontFamily="Inter">Positive this month</text>
+        </g>
+      )}
 
       <rect x="224" y="172" width="424" height="200" rx="12" fill="#F1F6F4" />
       <text x="244" y="196" fill="#172B36" fontSize="13" fontWeight="700" fontFamily="JetBrains Mono">Revenue Overview</text>
@@ -102,9 +119,11 @@ function FullDashboardSvg() {
         </g>
       ))}
 
-      <path className="chart-draw" d="M260 320 L290 300 L320 310 L350 280 L380 260 L410 250 L440 240 L470 230 L500 220 L530 210 L560 200 L590 195 L620 190" stroke="#FFC801" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="500" strokeDashoffset="500" />
-      <path className="chart-draw-forecast" d="M620 190 L632 185" stroke="#FF9932" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="20" strokeDashoffset="20" />
-      <circle cx="620" cy="190" r="3" fill="#FFC801" />
+      {phase < 2 && <path d="M260 320 L290 300 L320 310 L350 280 L380 260 L410 250 L440 240 L470 230 L500 220 L530 210 L560 200 L590 195 L620 190" stroke="#FFC801" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="500" strokeDashoffset="500" />}
+      {phase >= 2 && <path className="chart-draw" d="M260 320 L290 300 L320 310 L350 280 L380 260 L410 250 L440 240 L470 230 L500 220 L530 210 L560 200 L590 195 L620 190" stroke="#FFC801" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="500" strokeDashoffset="500" />}
+      {phase < 2 && <path d="M620 190 L632 185" stroke="#FF9932" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="20" strokeDashoffset="20" />}
+      {phase >= 2 && <path className="chart-draw-forecast" d="M620 190 L632 185" stroke="#FF9932" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="20" strokeDashoffset="20" />}
+      {phase >= 2 && <circle cx="620" cy="190" r="3" fill="#FFC801" />}
 
       {['J','F','M','A','M','J','J','A','S','O'].map((m, i) => (
         <text key={m} x={260 + i * 40} y="358" fill="#114C5A" fontSize="8" fontFamily="Inter" textAnchor="middle">{m}</text>
@@ -119,14 +138,15 @@ function FullDashboardSvg() {
       <text x="678" y="196" fill="#172B36" fontSize="13" fontWeight="700" fontFamily="JetBrains Mono">AI Insights</text>
 
       {[
-        { title: 'Revenue accelerating', desc: 'Up 12.5% — best month', color: '#FFC801' },
-        { title: 'Churn risk rising', desc: 'Response time up 40%', color: '#EF4444' },
-        { title: 'Inventory alert', desc: '5 products low stock', color: '#FF9932' },
-        { title: 'Forecast: 94% confidence', desc: 'Q4 within expected range', color: '#114C5A' },
+        { title: 'Revenue accelerating', desc: 'Up 12.5% — best month', color: '#FFC801', showAt: 3 },
+        { title: 'Churn risk rising', desc: 'Response time up 40%', color: '#EF4444', showAt: 3 },
+        { title: 'Inventory alert', desc: '5 products low stock', color: '#FF9932', showAt: 3 },
+        { title: 'Forecast: 94% confidence', desc: 'Q4 within expected range', color: '#114C5A', showAt: 3 },
       ].map((item, i) => {
         const y = 220 + i * 42
+        const visible = phase >= item.showAt || reduced
         return (
-          <g key={i} className="insight-item">
+          <g key={i} style={{ opacity: visible ? 1 : 0, transition: `opacity 0.4s ease-out ${i * 0.15}s` }}>
             <rect x="678" y={y} width="6" height="6" rx="1.5" fill={item.color} />
             <text x="694" y={y + 6} fill="#172B36" fontSize="10" fontWeight="600" fontFamily="Inter">{item.title}</text>
             <text x="694" y={y + 20} fill="#114C5A" fontSize="9" fontFamily="Inter">{item.desc}</text>
@@ -134,29 +154,33 @@ function FullDashboardSvg() {
         )
       })}
 
-      <rect x="224" y="388" width="200" height="90" rx="12" fill="#F1F6F4" />
-      <text x="244" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Top Channels</text>
-      <rect x="244" y="426" width="6" height="6" rx="1.5" fill="#FFC801" />
-      <text x="258" y="432" fill="#114C5A" fontSize="10" fontFamily="Inter">Direct — $142.4k (37%)</text>
-      <rect x="244" y="444" width="6" height="6" rx="1.5" fill="#FF9932" />
-      <text x="258" y="450" fill="#114C5A" fontSize="10" fontFamily="Inter">Organic — $98.2k (26%)</text>
-      <rect x="244" y="462" width="6" height="6" rx="1.5" fill="#114C5A" />
-      <text x="258" y="468" fill="#114C5A" fontSize="10" fontFamily="Inter">Referral — $72.1k (19%)</text>
+      {(phase >= 4 || reduced) && (
+        <g style={{ opacity: phase >= 4 || reduced ? 1 : 0, transition: 'opacity 0.4s ease-out' }}>
+          <rect x="224" y="388" width="200" height="90" rx="12" fill="#F1F6F4" />
+          <text x="244" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Top Channels</text>
+          <rect x="244" y="426" width="6" height="6" rx="1.5" fill="#FFC801" />
+          <text x="258" y="432" fill="#114C5A" fontSize="10" fontFamily="Inter">Direct — $142.4k (37%)</text>
+          <rect x="244" y="444" width="6" height="6" rx="1.5" fill="#FF9932" />
+          <text x="258" y="450" fill="#114C5A" fontSize="10" fontFamily="Inter">Organic — $98.2k (26%)</text>
+          <rect x="244" y="462" width="6" height="6" rx="1.5" fill="#114C5A" />
+          <text x="258" y="468" fill="#114C5A" fontSize="10" fontFamily="Inter">Referral — $72.1k (19%)</text>
 
-      <rect x="438" y="388" width="210" height="90" rx="12" fill="#F1F6F4" />
-      <text x="458" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Quick Actions</text>
-      <rect x="458" y="424" width="170" height="22" rx="6" fill="#FFC801" />
-      <text x="543" y="438" fill="white" fontSize="10" fontWeight="600" fontFamily="Inter" textAnchor="middle">Generate Report</text>
-      <rect x="458" y="452" width="170" height="22" rx="6" fill="white" stroke="#D9E8E2" strokeWidth="1" />
-      <text x="543" y="466" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" textAnchor="middle">Schedule Review</text>
+          <rect x="438" y="388" width="210" height="90" rx="12" fill="#F1F6F4" />
+          <text x="458" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Quick Actions</text>
+          <rect x="458" y="424" width="170" height="22" rx="6" fill="#FFC801" />
+          <text x="543" y="438" fill="white" fontSize="10" fontWeight="600" fontFamily="Inter" textAnchor="middle">Generate Report</text>
+          <rect x="458" y="452" width="170" height="22" rx="6" fill="white" stroke="#D9E8E2" strokeWidth="1" />
+          <text x="543" y="466" fill="#114C5A" fontSize="10" fontWeight="600" fontFamily="Inter" textAnchor="middle">Schedule Review</text>
 
-      <rect x="660" y="388" width="218" height="90" rx="12" fill="#F1F6F4" />
-      <text x="678" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Notifications</text>
-      <rect x="678" y="424" width="6" height="6" rx="1.5" fill="#EF4444" />
-      <text x="694" y="430" fill="#172B36" fontSize="10" fontWeight="600" fontFamily="Inter">3 alerts requiring attention</text>
-      <text x="694" y="446" fill="#114C5A" fontSize="9" fontFamily="Inter">Churn risk, inventory, payment failures</text>
-      <rect x="678" y="456" width="120" height="16" rx="4" fill="#FFC801" />
-      <text x="738" y="467" fill="white" fontSize="8" fontWeight="600" fontFamily="Inter" textAnchor="middle">View All</text>
+          <rect x="660" y="388" width="218" height="90" rx="12" fill="#F1F6F4" />
+          <text x="678" y="412" fill="#172B36" fontSize="12" fontWeight="700" fontFamily="JetBrains Mono">Notifications</text>
+          <rect x="678" y="424" width="6" height="6" rx="1.5" fill="#EF4444" />
+          <text x="694" y="430" fill="#172B36" fontSize="10" fontWeight="600" fontFamily="Inter">3 alerts requiring attention</text>
+          <text x="694" y="446" fill="#114C5A" fontSize="9" fontFamily="Inter">Churn risk, inventory, payment failures</text>
+          <rect x="678" y="456" width="120" height="16" rx="4" fill="#FFC801" />
+          <text x="738" y="467" fill="white" fontSize="8" fontWeight="600" fontFamily="Inter" textAnchor="middle">View All</text>
+        </g>
+      )}
     </svg>
   )
 }

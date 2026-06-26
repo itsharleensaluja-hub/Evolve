@@ -18,7 +18,7 @@ export default function SectionHeading({
         {title}
       </h2>
       {description && (
-        <p className="text-base md:text-lg leading-relaxed text-noir/60 max-w-xl mx-auto">
+        <p className="text-base md:text-lg leading-relaxed text-noir/75 max-w-xl mx-auto">
           {description}
         </p>
       )}

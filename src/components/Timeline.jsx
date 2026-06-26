@@ -31,10 +31,10 @@ export default function Timeline() {
               Evolution
             </span>
             <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.15] text-noir mb-5">
-              From data to decisions in four stages
+              Connect your data once. Let Evolve keep learning.
             </h2>
-            <p className="text-base md:text-lg leading-relaxed text-noir/60 max-w-md">
-              Evolve scales with your business. Start by connecting your tools and progress to full AI-powered transformation — at your own pace.
+            <p className="text-base md:text-lg leading-relaxed text-noir/75 max-w-md">
+              Your business changes every day. Your analytics should too.
             </p>
           </div>
 
@@ -97,10 +97,10 @@ function TimelineNode({ milestone, index, inView, reduced }) {
           >
             {milestone.phase}
           </span>
-          <span className="text-[10px] text-noir/40 font-heading">{milestone.metric}</span>
+          <span className="text-[10px] text-noir/60 font-heading">{milestone.metric}</span>
         </div>
         <h3 className="font-heading text-base font-bold text-noir mb-2">{milestone.title}</h3>
-        <p className="text-sm text-noir/60 leading-relaxed">{milestone.description}</p>
+        <p className="text-sm text-noir/75 leading-relaxed">{milestone.description}</p>
       </div>
     </div>
   )
