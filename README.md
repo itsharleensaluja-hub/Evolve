@@ -41,6 +41,10 @@ The pattern is: dark hero → light content → dark interactive section → lig
 
 No TypeScript. It's a 12-section landing page with 7 data files, not a component library. The overhead wasn't worth it for this scope.
 
+## Live site
+
+[https://evolve-fox4nmku7-harleen.vercel.app](https://evolve-fox4nmku7-harleen.vercel.app)
+
 ## Running it
 
 ```bash
