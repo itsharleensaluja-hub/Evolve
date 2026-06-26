@@ -53,7 +53,7 @@ export default function FAQ() {
   const [ref, inView] = useInView()
 
   return (
-    <section id="faq" className="py-20 md:py-28 bg-powder" ref={ref}>
+    <section id="faq" className="py-20 md:py-28 bg-powder" ref={ref} style={{ contentVisibility: 'auto' }}>
       <Container>
         <SectionHeading
           label="FAQ"

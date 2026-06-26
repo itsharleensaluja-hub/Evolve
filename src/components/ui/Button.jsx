@@ -12,7 +12,7 @@ const variants = {
   'ghost-dark':
     'bg-transparent text-noir/60 font-medium border-transparent hover:bg-mint/30 active:scale-[0.98]',
   gradient:
-    'bg-gradient-to-r from-yellow to-orange text-white font-semibold border-none hover:shadow-lg hover:shadow-orange/20 active:scale-[0.98]',
+    'bg-gradient-to-r from-yellow via-yellow to-orange bg-[length:200%] bg-[position:0%] hover:bg-[position:100%] text-noir font-semibold border-none hover:shadow-xl hover:shadow-yellow/25 hover:scale-[1.02] hover:-translate-y-[1px] active:scale-[0.98]',
 }
 
 const sizes = {
@@ -48,14 +48,13 @@ export default function Button({
     'btn-ripple inline-flex items-center justify-center cursor-pointer select-none transition-all duration-200 ease-out no-underline border'
 
   const Tag = href ? 'a' : 'button'
-  const hrefProps = href ? { href } : {}
 
   return (
     <Tag
       ref={btnRef}
+      href={href}
       className={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
-      onClick={href ? undefined : handleClick}
-      {...hrefProps}
+      onClick={handleClick}
       {...rest}
     >
       {children}

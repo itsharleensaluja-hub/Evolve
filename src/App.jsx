@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
@@ -8,11 +9,59 @@ import FAQ from './components/FAQ'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
+function ScrollProgress() {
+  const [width, setWidth] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight
+      setWidth(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  return <div className="scroll-progress" style={{ width: `${width}%` }} aria-hidden="true" />
+}
+
+function Loader({ onDone }) {
+  useEffect(() => {
+    const timer = setTimeout(onDone, 900)
+    return () => clearTimeout(timer)
+  }, [onDone])
+
+  return (
+    <div className="loader" aria-hidden="true">
+      <div className="flex flex-col items-center gap-6">
+        <svg width="48" height="48" viewBox="0 0 36 36" fill="none" className="loader-logo">
+          <rect x="2" y="2" width="32" height="32" rx="8" fill="none" stroke="#FFC801" strokeWidth="2" />
+          <path d="M10 10h10a4 4 0 0 1 0 8h-4m-6-8v16m0-8h8a4 4 0 0 1 4 4v4" stroke="#FFC801" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          <path d="M22 26l6-6m0 0h-4m4 0v4" stroke="#FF9932" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+        <div className="loader-bar">
+          <div className="loader-bar-fill" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
+  const [loading, setLoading] = useState(true)
+
   return (
     <>
+      {loading && <Loader onDone={() => setLoading(false)} />}
+
+      <a href="#main" className="skip-link">
+        Skip to content
+      </a>
+
+      <ScrollProgress />
       <Navbar />
-      <main>
+
+      <main id="main">
         <Hero />
         <Features />
         <DashboardPreview />
@@ -21,6 +70,7 @@ export default function App() {
         <FAQ />
         <CTA />
       </main>
+
       <Footer />
     </>
   )
