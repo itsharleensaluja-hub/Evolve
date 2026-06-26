@@ -19,6 +19,7 @@ export function useWaapiAnimation(keyframes, options = {}, deps = []) {
     return () => {
       if (animRef.current) animRef.current.cancel()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 
   return ref

@@ -29,7 +29,7 @@ export default function CTA() {
             Ready to evolve your business?
           </h2>
           <p className="text-base md:text-lg leading-relaxed mb-8 max-w-lg mx-auto text-mint/70">
-            Join thousands of businesses using Evolve to make smarter decisions. Start your free 14-day trial.
+            From revenue forecasting to churn prediction — see what AI-powered BI does for your business. No credit card required.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">

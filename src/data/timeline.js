@@ -1,0 +1,38 @@
+export const milestones = [
+  {
+    id: 1,
+    phase: 'Connect',
+    title: 'Unify your data sources',
+    description: 'Connect Stripe, Shopify, Google Analytics, Salesforce, and 500+ other tools. Evolve builds a unified data model in minutes — no engineering time required.',
+    icon: 'link',
+    metric: 'Built in < 10 min',
+    color: '#10B981',
+  },
+  {
+    id: 2,
+    phase: 'Analyze',
+    title: 'AI discovers patterns instantly',
+    description: 'Within hours of connecting, our AI surfaces revenue trends, cost anomalies, customer churn signals, and growth opportunities you didn\'t know existed.',
+    icon: 'search',
+    metric: '500+ data points analyzed',
+    color: '#FFC801',
+  },
+  {
+    id: 3,
+    phase: 'Automate',
+    title: 'Workflows run themselves',
+    description: 'Turn insights into actions. Auto-generate reports, send Slack alerts when KPIs dip, reorder inventory, or trigger email campaigns — all without code.',
+    icon: 'arrow-path',
+    metric: '80% reporting automated',
+    color: '#FF9932',
+  },
+  {
+    id: 4,
+    phase: 'Transform',
+    title: 'Predict and shape the future',
+    description: 'Revenue forecasting with 94% accuracy, what-if scenario modeling, and AI recommendations that help you make smarter decisions — every single day.',
+    icon: 'arrow-trending-up',
+    metric: '94% forecast accuracy',
+    color: '#114C5A',
+  },
+]

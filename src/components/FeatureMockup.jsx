@@ -1,4 +1,4 @@
-export default function FeatureMockup({ type, className = '', isActive = false, size = 'sm' }) {
+export default function FeatureMockup({ type, className = '', size = 'sm' }) {
   const height = size === 'lg' ? 'h-32' : size === 'md' ? 'h-28' : 'h-24'
 
   const mockups = {
@@ -124,21 +124,28 @@ export default function FeatureMockup({ type, className = '', isActive = false, 
       </svg>
     ),
     cube: (
-      <svg viewBox="0 0 200 120" fill="none" className="w-full h-full">
-        <rect width="200" height="120" rx="6" fill="#F1F6F4" />
+      <svg viewBox="0 0 200 140" fill="none" className="w-full h-full">
+        <rect width="200" height="140" rx="6" fill="#F1F6F4" />
         <rect x="144" y="6" width="50" height="18" rx="4" fill="#FFC801" opacity="0.15" />
         <text x="152" y="17" fill="#FFC801" fontSize="8" fontWeight="700" fontFamily="JetBrains Mono">AI</text>
-        <rect x="12" y="34" width="140" height="22" rx="8" fill="#FFC801" opacity="0.1" />
-        <text x="22" y="48" fill="#172B36" fontSize="9" fontWeight="600" fontFamily="Inter">How is Q3 revenue trending?</text>
-        <rect x="12" y="62" width="176" height="22" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
-        <circle cx="24" cy="73" r="6" fill="#FFC801" />
-        <text x="24" y="76" fill="white" fontSize="6" fontWeight="700" fontFamily="Inter" textAnchor="middle">AI</text>
-        <text x="36" y="76" fill="#172B36" fontSize="9" fontFamily="Inter">Up 12.5%. Main driver: new enterprise deals.</text>
-        <rect x="12" y="88" width="176" height="22" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
-        <circle cx="24" cy="99" r="6" fill="#FFC801" />
-        <text x="36" y="99" fill="#172B36" fontSize="9" fontFamily="Inter">Churn up 8%. Suggest: review support SLAs.</text>
-        <rect x="150" y="96" width="30" height="12" rx="4" fill="#114C5A" opacity="0.08" />
-        <text x="154" y="104" fill="#114C5A" fontSize="6" fontFamily="Inter">2/3</text>
+
+        <rect x="90" y="32" width="98" height="22" rx="8" fill="#114C5A" />
+        <text x="98" y="46" fill="white" fontSize="8" fontWeight="500" fontFamily="Inter">How is revenue trending?</text>
+
+        <rect x="12" y="60" width="140" height="32" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
+        <circle cx="24" cy="76" r="5" fill="#FFC801" />
+        <text x="34" y="73" fill="#172B36" fontSize="8" fontWeight="600" fontFamily="Inter">Revenue up 12.5% this month</text>
+        <text x="34" y="84" fill="#114C5A" fontSize="7" fontFamily="Inter">Main drivers: enterprise deals + upsells</text>
+
+        <rect x="74" y="98" width="114" height="22" rx="8" fill="#114C5A" />
+        <text x="82" y="112" fill="white" fontSize="8" fontWeight="500" fontFamily="Inter">What about churn?</text>
+
+        <g className="typing-indicator">
+          <rect x="12" y="126" width="60" height="22" rx="8" fill="white" stroke="#D9E8E2" strokeWidth="1" />
+          <circle cx="20" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0s' }} />
+          <circle cx="30" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0.15s' }} />
+          <circle cx="40" cy="137" r="2" fill="#FFC801" className="typing-dot" style={{ animationDelay: '0.3s' }} />
+        </g>
       </svg>
     ),
     link: (
@@ -158,12 +165,36 @@ export default function FeatureMockup({ type, className = '', isActive = false, 
               <rect x="16" y={y + 4} width="3" height="14" rx="1" fill={i === 0 ? '#FFC801' : i === 1 ? '#FF9932' : '#114C5A'} />
               <text x="26" y={y + 9} fill="#172B36" fontSize="9" fontWeight="600" fontFamily="Inter">{item.title}</text>
               <text x="26" y={y + 19} fill="#114C5A" fontSize="7" fontFamily="Inter">{item.desc}</text>
-              <circle cx="175" cy={y + 11} r="4" fill="#FFC801" opacity="i === 0 ? 1 : 0.3" />
+              <circle cx="175" cy={y + 11} r="4" fill="#FFC801" opacity={i === 0 ? 1 : 0.3} />
             </g>
           )
         })}
         <rect x="12" y="100" width="176" height="14" rx="6" fill="#FFC801" opacity="0.12" />
         <text x="100" y="110" fill="#FF9932" fontSize="7" fontWeight="700" fontFamily="Inter" textAnchor="middle">View all 8 recommendations →</text>
+      </svg>
+    ),
+    'goal-tracking': (
+      <svg viewBox="0 0 200 120" fill="none" className="w-full h-full">
+        <rect width="200" height="120" rx="6" fill="#F1F6F4" />
+        <rect x="144" y="6" width="50" height="18" rx="4" fill="#10B981" opacity="0.15" />
+        <text x="152" y="17" fill="#10B981" fontSize="8" fontWeight="700" fontFamily="JetBrains Mono">LIVE</text>
+        <text x="16" y="42" fill="#172B36" fontSize="10" fontWeight="700" fontFamily="Inter">Q4 Objectives</text>
+        {[
+          { label: 'Revenue target', pct: '92', color: '#FFC801' },
+          { label: 'Customer retention', pct: '78', color: '#FFC801' },
+          { label: 'Cost reduction', pct: '65', color: '#FF9932' },
+          { label: 'Product launch', pct: '45', color: '#FF9932' },
+          { label: 'Team growth', pct: '30', color: '#114C5A' },
+        ].map((item, i) => {
+          const y = 52 + i * 14
+          return (
+            <g key={i}>
+              <rect x="16" y={y} width="168" height="10" rx="5" fill="#D9E8E2" />
+              <rect x="16" y={y} width="0" height="10" rx="5" fill={item.color} className="progress-fill" style={{ animationDelay: `${i * 0.12}s`, '--progress-width': `${item.pct}%` }} />
+              <text x="144" y={y + 8} fill="#114C5A" fontSize="6" fontFamily="Inter" textAnchor="end">{item.pct}%</text>
+            </g>
+          )
+        })}
       </svg>
     ),
   }

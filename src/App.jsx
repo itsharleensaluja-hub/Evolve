@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Features from './components/Features'
+import Timeline from './components/Timeline'
+import HealthScoreGauge from './components/HealthScoreGauge'
 import DashboardPreview from './components/DashboardPreview'
+import ScenarioSimulator from './components/ScenarioSimulator'
 import Pricing from './components/Pricing'
 import Testimonials from './components/Testimonials'
 import FAQ from './components/FAQ'
@@ -64,7 +67,10 @@ export default function App() {
       <main id="main">
         <Hero />
         <Features />
+        <Timeline />
+        <HealthScoreGauge />
         <DashboardPreview />
+        <ScenarioSimulator />
         <Pricing />
         <Testimonials />
         <FAQ />

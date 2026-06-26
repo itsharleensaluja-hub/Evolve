@@ -1,7 +1,7 @@
 export const faqs = [
   {
     question: 'What is Evolve and how does it work?',
-    answer: 'Evolve is an AI-powered business intelligence platform that connects to your data sources, analyzes performance metrics, and delivers actionable insights. Connect your tools, and our AI automatically starts identifying patterns, predicting trends, and recommending improvements.',
+    answer: 'Evolve connects to your existing tools — Stripe, Shopify, Google Analytics, Salesforce, and 500+ others — and builds a live AI model of your business. It surfaces health scores, revenue forecasts, churn risks, and automation workflows without you writing a single query.',
   },
   {
     question: 'How is my data secured?',
@@ -9,7 +9,7 @@ export const faqs = [
   },
   {
     question: 'Can I integrate with my existing tools?',
-    answer: 'Evolve integrates with 500+ business tools including Stripe, Shopify, Google Analytics, Salesforce, HubSpot, and Xero. Enterprise plans include custom integrations via our REST API and webhooks.',
+    answer: 'Evolve connects with 500+ tools across payments, analytics, CRM, support, marketing, and accounting. Connect Stripe for revenue data, Shopify for sales trends, Google Analytics for traffic, and Salesforce for pipeline — our AI cross-references them all automatically. Enterprise plans add custom integrations via REST API and webhooks.',
   },
   {
     question: 'How accurate is the AI forecasting?',
@@ -17,7 +17,7 @@ export const faqs = [
   },
   {
     question: 'What happens during the free trial?',
-    answer: 'The 14-day free trial gives you full access to the Growth plan with no limitations and no credit card required. After the trial, choose a plan or your data remains securely stored for 30 days.',
+    answer: 'The 14-day free trial gives you full Growth plan access — connect up to 10 data sources, see your business health score, run revenue forecasts, and set up automated workflows. No credit card required, no feature gates. If you don\'t subscribe, your data stays encrypted and available for 30 days.',
   },
   {
     question: 'Can I change my plan later?',
@@ -25,10 +25,10 @@ export const faqs = [
   },
   {
     question: 'Do you offer discounts for annual billing?',
-    answer: 'Yes, all plans receive a 20% discount when billed annually. You can switch between monthly and annual billing at any time from your account settings.',
+    answer: 'All plans receive a 20% discount when billed annually — effectively getting two months free. You can switch between monthly and annual billing at any time, and we prorate remaining credits on downgrades.',
   },
   {
     question: 'What kind of support do you provide?',
-    answer: 'Starter includes email support with 24-hour response. Growth includes priority support with 4-hour response. Enterprise includes a dedicated account manager with 1-hour response and 24/7 phone support.',
+    answer: 'Starter: email support with 24-hour response from our AI-assisted team. Growth: priority support with 4-hour response, plus a dedicated onboarding call. Enterprise: named account manager, 1-hour response SLA, 24/7 phone support, and quarterly business reviews with our data science team.',
   },
 ]

@@ -8,6 +8,7 @@ export const features = [
     statusColor: '#10B981',
     badge: 'Health Score 87',
     size: 'lg',
+    layout: 'chart-first',
     kpis: [
       { label: 'Revenue', value: '$128.4k', trend: '+12.5%' },
       { label: 'Health', value: '87/100', trend: '+4 pts' },
@@ -22,6 +23,7 @@ export const features = [
     statusColor: '#FFC801',
     badge: '12 new today',
     size: 'md',
+    layout: 'split',
     kpis: [
       { label: 'Insights', value: '284', trend: '+12 today' },
     ],
@@ -35,6 +37,7 @@ export const features = [
     statusColor: '#FF9932',
     badge: '94% accuracy',
     size: 'sm',
+    layout: 'default',
   },
   {
     id: 4,
@@ -45,6 +48,7 @@ export const features = [
     statusColor: '#EF4444',
     badge: '3 active',
     size: 'sm',
+    layout: 'chart-first',
   },
   {
     id: 5,
@@ -55,6 +59,7 @@ export const features = [
     statusColor: '#10B981',
     badge: '5 running',
     size: 'sm',
+    layout: 'default',
     kpis: [
       { label: 'Tasks done', value: '1,247', trend: 'today' },
     ],
@@ -62,12 +67,13 @@ export const features = [
   {
     id: 6,
     title: 'AI Assistant',
-    description: 'Ask anything in plain English. "Why did revenue dip last week?" — it answers with data, charts, and recommendations in seconds.',
+    description: 'Ask questions in plain English and get answers with data, charts, and recommendations. Multi-turn conversations that feel like talking to your best analyst.',
     icon: 'cube',
     status: 'AI',
     statusColor: '#FFC801',
     badge: 'Always on',
     size: 'sm',
+    layout: 'split',
   },
   {
     id: 7,
@@ -78,6 +84,7 @@ export const features = [
     statusColor: '#FFC801',
     badge: '8 recommendations',
     size: 'md',
+    layout: 'split',
   },
   {
     id: 8,
@@ -88,6 +95,7 @@ export const features = [
     statusColor: '#10B981',
     badge: 'Q4 progress',
     size: 'sm',
+    layout: 'kpi-hero',
     kpis: [
       { label: 'Goals on track', value: '6/8', trend: '' },
     ],

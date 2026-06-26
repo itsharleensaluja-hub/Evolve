@@ -7,7 +7,7 @@ export default function Logo({ className = '', showTagline = true, dark = false 
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" className="shrink-0 transition-transform duration-300 group-hover:scale-105">
         <defs>
           <linearGradient id="logo-stroke-lg" x1="0" y1="0" x2="40" y2="40">
-            <stop offset="0%" stopColor="#114C5A" />
+            <stop offset="0%" stopColor="#F1F6F4" />
             <stop offset="40%" stopColor="#FFC801" />
             <stop offset="100%" stopColor="#FF9932" />
           </linearGradient>

@@ -1,4 +1,3 @@
-import { useRef } from 'react'
 import Container from './ui/Container'
 import SectionHeading from './ui/SectionHeading'
 import { useInView } from '../hooks/useInView'
@@ -8,11 +7,7 @@ import { useReducedMotion } from '../hooks/useReducedMotion'
 export default function DashboardPreview() {
   const [ref, inView] = useInView({ threshold: 0.05 })
   const reduced = useReducedMotion()
-  const containerRef = useRef(null)
-  const chartRef = useRef(null)
-
-  useWaapiAnimation(
-    containerRef,
+  const containerRef = useWaapiAnimation(
     [{ opacity: 0, transform: 'translateY(30px)' }, { opacity: 1, transform: 'translateY(0)' }],
     { duration: 700, delay: reduced ? 0 : 100, fill: 'forwards' },
     [inView, reduced]
@@ -108,7 +103,7 @@ function FullDashboardSvg() {
       ))}
 
       <path className="chart-draw" d="M260 320 L290 300 L320 310 L350 280 L380 260 L410 250 L440 240 L470 230 L500 220 L530 210 L560 200 L590 195 L620 190" stroke="#FFC801" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="500" strokeDashoffset="500" />
-      <path className="chart-draw-forecast" d="M620 190 L632 185" stroke="#FF9932" strokeWidth="2" strokeDasharray="4 3" fill="none" strokeLinecap="round" strokeDasharray="20" strokeDashoffset="20" />
+      <path className="chart-draw-forecast" d="M620 190 L632 185" stroke="#FF9932" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="20" strokeDashoffset="20" />
       <circle cx="620" cy="190" r="3" fill="#FFC801" />
 
       {['J','F','M','A','M','J','J','A','S','O'].map((m, i) => (

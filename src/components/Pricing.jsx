@@ -18,7 +18,7 @@ const PriceDisplay = memo(function PriceDisplay({ amount, currency, annual, peri
   return (
     <div className="mb-6">
       <div className="flex items-baseline gap-1">
-        <span className="font-heading text-4xl md:text-5xl font-extrabold text-noir transition-all duration-300">
+        <span key={`${annual}-${currency.code}`} className="font-heading text-4xl md:text-5xl font-extrabold text-noir animate-price-enter">
           {formatted}
         </span>
         <span className="text-sm text-noir/50">{period}</span>
@@ -162,7 +162,7 @@ export default function Pricing() {
         <SectionHeading
           label="Pricing"
           title="Simple, transparent plans"
-          description="Start free, upgrade when you grow. All plans include a 14-day free trial — no credit card required."
+          description="Every plan includes AI health scores, revenue forecasting, and real-time monitoring. Start free, upgrade when you grow."
         />
 
         <div className={`flex flex-col items-center gap-6 mb-12 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
